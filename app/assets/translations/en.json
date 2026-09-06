@@ -1,0 +1,66 @@
+{
+  "app_name": "MandiSense",
+  "crops": {
+    "Tomato": "Tomato",
+    "Onion": "Onion",
+    "Potato": "Potato"
+  },
+  "home": {
+    "select_crop": "Select Crop",
+    "quantity_kg": "Quantity (kg)",
+    "enter_quantity": "Enter quantity",
+    "use_my_location": "Use My Location",
+    "compare_options": "Compare Options",
+    "loading": "Comparing markets...",
+    "could_not_get_location": "Could not get location",
+    "location": "Location",
+    "header_title": "Find the Best Market",
+    "header_subtitle": "Compare nearby markets to maximise your returns."
+  },
+  "results": {
+    "title_suffix": "— Results",
+    "offline_banner": "Offline — showing last saved prices",
+    "best_option": "Best Option",
+    "km_away": "{dist} km away",
+    "net_return": "Net Return",
+    "transport_cost": "Transport cost",
+    "error_title": "No Data Available",
+    "error_msg": "Could not load market data. Check your connection and try again.",
+    "retry": "Retry",
+    "empty_msg": "No markets found within the search radius for this crop.",
+    "you_saved": "You saved",
+    "savings_subtitle": "by choosing {best} over the nearest market, {nearest}"
+  },
+  "trends": {
+    "rising": "Rising",
+    "falling": "Falling",
+    "stable": "Stable"
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "coming_soon": "Coming Soon",
+    "feature_forecast": "Price Forecasting",
+    "feature_pooling": "Transport Pooling",
+    "feature_spoilage": "Spoilage-Adjusted Returns",
+    "desc_forecast": "Short-horizon ML price prediction.",
+    "desc_pooling": "Transport cost-sharing with nearby farmers.",
+    "desc_spoilage": "Spoilage-adjusted net return calculation.",
+    "unknown": "Unknown Feature"
+  },
+  "rationale": {
+    "best": "Best option — ₹{amount} higher net return than the next best market, and price has been {trend} this week.",
+    "only": "Only market in range. Price has been {trend} this week.",
+    "lower": "₹{amount} less net return than the best option. Price has been {trend} this week."
+  },
+  "decision": {
+    "title": "Timing Strategy",
+    "sell_today": "Sell Today",
+    "wait_2_days": "Wait 2 Days",
+    "rationale_falling": "Prices are falling. Sell now before they drop further.",
+    "rationale_stable": "No significant price increase expected. Better to sell now.",
+    "rationale_wait": "Prices are rising. Waiting 2 days could yield ~{gain}% more profit.",
+    "rationale_small_gain": "Projected gain is too small to justify waiting. Sell now.",
+    "share_message_best": "MandiSense recommends: Sell {qty}kg {crop} at {market} — ₹{amount} more profit than the next option. Price trend: {trend} {emoji}",
+    "share_message_only": "MandiSense recommends: Sell {qty}kg {crop} at {market}. Price trend: {trend} {emoji}"
+  }
+}

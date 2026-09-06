@@ -1,0 +1,44 @@
+name: mandisense_app
+description: "MandiSense - Crop market comparison for farmers"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  http: ^1.2.2
+  shared_preferences: ^2.3.3
+  geolocator: ^13.0.2
+  flutter_tts: ^4.0.2
+  easy_localization: ^3.0.7
+  share_plus: ^13.3.0
+  provider: ^6.1.5+1
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#2E7D32"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icon/
+    - assets/translations/
