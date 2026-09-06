@@ -32,7 +32,7 @@ class ApiService {
   // Change this to match your setup:
   // Android emulator: http://10.0.2.2:8000
   // Browser / iOS sim: http://localhost:8000
-  static const String baseUrl = 'http://localhost:8000';
+  static const String baseUrl = 'https://mandi-sense-backend.onrender.com';
 
   static const Duration _timeout = Duration(seconds: 10);
 
