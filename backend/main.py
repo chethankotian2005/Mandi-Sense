@@ -48,8 +48,11 @@ async def keep_alive_task():
         await asyncio.sleep(14 * 60)  # Wait for 14 minutes
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'KeepAlive/1.0'})
-            with urllib.request.urlopen(req) as response:
-                logger.info(f"Keep-alive ping successful: {response.status}")
+            def _ping():
+                with urllib.request.urlopen(req, timeout=10) as response:
+                    return response.status
+            status = await asyncio.to_thread(_ping)
+            logger.info(f"Keep-alive ping successful: {status}")
         except Exception as e:
             logger.warning(f"Keep-alive ping failed: {e}")
 
