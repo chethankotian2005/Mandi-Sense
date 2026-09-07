@@ -15,6 +15,9 @@
 
 The platform consists of a **Flutter mobile application** (supporting Android, iOS, and Web) and a fast **Python/FastAPI backend** that calculates dynamic net returns, projects price trends, and provides actionable intelligence.
 
+### 🏗️ System Architecture
+![MandiSense Architecture](architecture.png)
+
 ## ✨ Key Features
 
 - 📍 **Smart Market Comparison**: Automatically detects the farmer's location and compares crop prices across all markets within a 50km radius.
