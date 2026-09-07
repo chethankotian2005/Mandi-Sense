@@ -8,7 +8,12 @@ Endpoints:
 """
 
 import math
+import asyncio
+import os
+import urllib.request
+import logging
 from datetime import date, timedelta
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -29,11 +34,39 @@ from schemas import (
 # ── Create tables if they don't exist ──────────────────────────────
 Base.metadata.create_all(bind=engine)
 
+# ── Background Task to keep Render awake ───────────────────────────
+logger = logging.getLogger(__name__)
+
+async def keep_alive_task():
+    """
+    Periodic task to ping the server every 14 minutes to prevent Render from
+    sleeping the free tier instance after 15 minutes of inactivity.
+    """
+    # Render sets RENDER_EXTERNAL_URL automatically. Fallback to localhost for dev.
+    url = os.getenv("RENDER_EXTERNAL_URL", "http://localhost:8000") + "/api/health"
+    while True:
+        await asyncio.sleep(14 * 60)  # Wait for 14 minutes
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'KeepAlive/1.0'})
+            with urllib.request.urlopen(req) as response:
+                logger.info(f"Keep-alive ping successful: {response.status}")
+        except Exception as e:
+            logger.warning(f"Keep-alive ping failed: {e}")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Start the background task
+    task = asyncio.create_task(keep_alive_task())
+    yield
+    # Cancel the background task on shutdown
+    task.cancel()
+
 # ── App setup ──────────────────────────────────────────────────────
 app = FastAPI(
     title="MandiSense API",
     description="Crop market comparison and price intelligence for farmers",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 # CORS — allow all origins (hackathon demo)
